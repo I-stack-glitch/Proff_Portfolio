@@ -23,7 +23,9 @@ const Header: React.FC<HeaderProps> = ({ username = "Mohammed Anas" }) => {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
         <div>
           <p className="text-muted-foreground text-sm md:text-base">Good evening,</p>
-          <h1 className="text-xl md:text-2xl font-bold text-white">{username}</h1>
+          <h1 className="text-xl md:text-2xl font-bold text-white overflow-hidden text-ellipsis whitespace-nowrap">
+            {username}
+          </h1>
         </div>
 
         <div className="flex items-center gap-4">
