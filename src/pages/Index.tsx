@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Sidebar from '@/components/Sidebar';
 import Header from '@/components/Header';
@@ -28,13 +27,13 @@ const Index = () => {
       title: "Weather App",
       description: "A simple weather application that fetches real-time weather data.",
       tags: ["JavaScript", "API Integration"],
-      size: "sm"
+      size: "sm" as "sm"
     },
     {
       title: "Task Manager",
       description: "A productivity tool for managing tasks and projects with drag-and-drop functionality.",
       tags: ["React", "TypeScript", "Firebase"],
-      size: "sm"
+      size: "sm" as "sm"
     }
   ];
   
@@ -96,7 +95,7 @@ const Index = () => {
                   image={project.image}
                   tags={project.tags}
                   featured={project.featured}
-                  size={project.size}
+                  size={project.size as "sm" | "lg" | undefined}
                 />
               ))}
             </div>
