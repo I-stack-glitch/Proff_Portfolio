@@ -39,7 +39,7 @@ const Sidebar = () => {
         <Tooltip key={item.path} delayDuration={300}>
           <TooltipTrigger asChild>
             <div 
-              className={`sidebar-icon ${isActive(item.path) ? 'bg-sidebar-accent text-primary' : ''} hover:bg-sidebar-accent transition-colors cursor-pointer`}
+              className={`sidebar-icon ${isActive(item.path) ? 'bg-sidebar-accent text-primary' : ''} hover:bg-sidebar-accent transition-colors cursor-pointer arrow-hover`}
               onClick={() => handleNavigation(item.path)}
             >
               <item.icon size={24} />
@@ -54,7 +54,7 @@ const Sidebar = () => {
       <div className="mt-auto">
         <Tooltip delayDuration={300}>
           <TooltipTrigger asChild>
-            <div className="sidebar-icon">
+            <div className="sidebar-icon arrow-hover">
               <Settings size={24} />
             </div>
           </TooltipTrigger>

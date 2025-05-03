@@ -14,13 +14,13 @@ const Profile = () => {
   const { toast } = useToast();
   const [isEditing, setIsEditing] = useState(false);
   const [profileData, setProfileData] = useState({
-    name: "John Designer",
-    role: "UI/UX Designer",
-    bio: "Passionate designer with over 5 years of experience creating beautiful and functional interfaces.",
-    email: "john@example.com",
-    phone: "+1 (555) 123-4567",
-    location: "San Francisco, CA",
-    imageUrl: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80"
+    name: "Mohammed Anas",
+    role: "Software And Robotic Eng",
+    bio: "Aspiring Software and Robotics Engineer, building hands-on projects that merge intelligent code with real-world control systems.",
+    email: "ff2974247@gmail.com",
+    phone: "056 893 6869",
+    location: "United Arab Emirates, Sharjah",
+    imageUrl: "https://i.postimg.cc/C11ZVsXB/Reshot.jpg"
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

@@ -1,8 +1,68 @@
-
-#root {
+#root,
+body {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   overflow-x: hidden;
+  background-color: #f8f8f0; /* Soft cream background */
+  background-image:
+    /* Rounded Terminals (Radial Gradients) */
+    radial-gradient(circle at 15% 25%, #d4af37 2px, transparent 3px),
+    radial-gradient(circle at 40% 10%, #d4af37 2px, transparent 3px),
+    radial-gradient(circle at 70% 30%, #d4af37 2px, transparent 3px),
+    radial-gradient(circle at 20% 60%, #d4af37 2px, transparent 3px),
+    radial-gradient(circle at 55% 80%, #d4af37 2px, transparent 3px),
+    radial-gradient(circle at 85% 65%, #d4af37 2px, transparent 3px),
+    /* Horizontal Traces (Linear Gradients) */
+    linear-gradient(to right, transparent, #d4af37 20%, #d4af37 80%, transparent), /* Gold horizontal trace */
+    linear-gradient(to right, transparent, #e0d0b0 15%, #e0d0b0 85%, transparent), /* Beige horizontal trace */
+    linear-gradient(to right, transparent, #d4af37 25%, #d4af37 75%, transparent),
+    /* Vertical Traces (Linear Gradients) */
+    linear-gradient(to bottom, transparent, #d4af37 20%, #d4af37 80%, transparent), /* Gold vertical trace */
+    linear-gradient(to bottom, transparent, #e0d0b0 15%, #e0d0b0 85%, transparent), /* Beige vertical trace */
+    linear-gradient(to bottom, transparent, #d4af37 25%, #d4af37 75%, transparent),
+    /* Angled Traces (Linear Gradients) */
+    linear-gradient(45deg, transparent, #d4af37 20%, #d4af37 80%, transparent), /* Angled gold trace */
+    linear-gradient(45deg, transparent, #e0d0b0 15%, #e0d0b0 85%, transparent), /* Angled beige trace */
+    linear-gradient(135deg, transparent, #d4af37 25%, #d4af37 75%, transparent),
+    /* Base Layer for shadows and background */
+    linear-gradient(to right, transparent, rgba(0, 0, 0, 0.05) 5%, transparent);
+  background-size: 200px 100px, 150px 120px, 180px 90px, 100px 150px, 120px 180px, 90px 110px, 300px 10px, 250px 10px, 350px 10px, 10px 300px, 10px 250px, 10px 350px, 250px 10px, 300px 10px, 300px 10px, 100% 100%;
+  background-repeat: repeat;
+  background-position: 0 0, 200px 200px, 50px 300px, 300px 100px, 100px 300px, 500px 20px, 0 0, 50px 50px, 200px 200px, 0px 100px, 50px 0px, 100px 300px, 0 0, 150px 200px, 200px 200px, 0 0;
+  animation: circuit-flow 60s linear infinite;
+}
+
+@keyframes circuit-flow {
+  0% {
+    background-position: 0 0, 200px 200px, 50px 300px, 300px 100px, 100px 300px, 500px 20px, 0 0, 50px 50px, 200px 200px, 0px 100px, 50px 0px, 100px 300px, 0 0, 150px 200px, 200px 200px, 0 0;
+  }
+  100% {
+    background-position: 200px 0, 400px 200px, 250px 300px, 500px 100px, 300px 300px, 700px 20px, 200px 0, 250px 50px, 400px 200px, 200px 100px, 250px 0px, 300px 300px, 200px 0, 350px 200px, 400px 200px, 200px 0;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure the container fills the screen height */
+  width: 100%;
+  overflow-x: hidden; /* Hide horizontal overflow */
+  overflow-y: auto; /* Enable vertical scrolling if content overflows */
+  /* You can add more styling here if needed */
+}
+
+.flex {
+  display: flex;
+  width: 100%;
+}
+
+.grid {
+  display: grid;
+  width: 100%;
+}
+
+body {
+  @apply bg-background text-foreground;
 }

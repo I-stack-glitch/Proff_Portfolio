@@ -1,10 +1,9 @@
-
 import React from 'react';
 import Sidebar from '@/components/Sidebar';
 import Header from '@/components/Header';
 import SectionHeader from '@/components/SectionHeader';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { BarChart, GraduationCap, School } from 'lucide-react';
+import { BarChart, GraduationCap, School, Award } from 'lucide-react';
 import { Progress } from '@/components/ui/progress';
 
 const Academic = () => {
@@ -13,6 +12,7 @@ const Academic = () => {
       school: "India International School",
       year: "2015",
       score: "95%",
+      gpa: "9.5",
       subjects: [
         { name: "Mathematics", score: 98 },
         { name: "Science", score: 95 },
@@ -25,6 +25,7 @@ const Academic = () => {
       school: "India International School",
       year: "2017",
       score: "92%",
+      gpa: "9.2",
       subjects: [
         { name: "Mathematics", score: 95 },
         { name: "Physics", score: 90 },
@@ -32,11 +33,121 @@ const Academic = () => {
         { name: "Computer Science", score: 98 },
         { name: "English", score: 89 },
       ]
+    },
+    manipalUniversity: {
+      school: "Manipal University, UAE",
+      image: "https://i.postimg.cc/V6Y6WWmZ/manipal.png",
+      description: `Choosing Manipal University for my higher education was a deliberate step towards an environment that blends academic excellence with innovation and hands-on experience. Known for its global standards and dynamic academic culture, Manipal offered me more than just a degree—it provided a platform to think critically, explore deeply, and grow holistically.
+        
+        What I value most about my time here is the emphasis on practical learning, interdisciplinary collaboration, and research-oriented projects. The curriculum is designed to be industry-relevant, encouraging us to build real-world skills alongside strong theoretical foundations. Manipal's vibrant campus life, combined with its state-of-the-art labs and supportive faculty, has played a major role in shaping my technical skills, leadership abilities, and creative thinking.
+
+        Being part of such a forward-thinking institution has not only helped me grow academically but has also prepared me to face challenges with confidence and adaptability.`,
+      years: [
+        {
+          year: "1st Year",
+          semesters: [
+            {
+              name: "Semester 1",
+              gpa: "8.6",
+              subjects: [
+                { name: "Engineering Mathematics", score: 88 },
+                { name: "Physics", score: 85 },
+                { name: "Basic Electrical Engineering", score: 83 },
+                { name: "Workshop Practice", score: 90 }
+              ]
+            },
+            {
+              name: "Semester 2",
+              gpa: "8.8",
+              subjects: [
+                { name: "Engineering Chemistry", score: 86 },
+                { name: "Engineering Graphics", score: 89 },
+                { name: "Programming in C", score: 91 },
+                { name: "Environmental Studies", score: 87 }
+              ]
+            }
+          ]
+        },
+        {
+          year: "2nd Year",
+          semesters: [
+            {
+              name: "Semester 3",
+              gpa: "8.7",
+              subjects: [
+                { name: "Data Structures", score: 90 },
+                { name: "Digital Electronics", score: 84 },
+                { name: "Discrete Mathematics", score: 87 },
+                { name: "Computer Organization", score: 85 }
+              ]
+            },
+            {
+              name: "Semester 4",
+              gpa: "8.9",
+              subjects: [
+                { name: "Object-Oriented Programming", score: 92 },
+                { name: "Database Systems", score: 89 },
+                { name: "Operating Systems", score: 88 },
+                { name: "Software Engineering", score: 86 }
+              ]
+            }
+          ]
+        },
+        {
+          year: "3rd Year",
+          semesters: [
+            {
+              name: "Semester 5",
+              gpa: "8.9",
+              subjects: [
+                { name: "Design & Analysis of Algorithms", score: 91 },
+                { name: "Web Technologies", score: 90 },
+                { name: "Computer Networks", score: 88 },
+                { name: "Compiler Design", score: 87 }
+              ]
+            },
+            {
+              name: "Semester 6",
+              gpa: "9.1",
+              subjects: [
+                { name: "Mobile Application Development", score: 92 },
+                { name: "Machine Learning", score: 94 },
+                { name: "Cloud Computing", score: 89 },
+                { name: "Open Elective", score: 88 }
+              ]
+            }
+          ]
+        },
+        {
+          year: "4th Year",
+          semesters: [
+            {
+              name: "Semester 7",
+              gpa: "9.0",
+              subjects: [
+                { name: "Project Phase I", score: 93 },
+                { name: "Internet of Things", score: 90 },
+                { name: "Cybersecurity", score: 88 },
+                { name: "Elective I", score: 87 }
+              ]
+            },
+            {
+              name: "Semester 8",
+              gpa: "9.2",
+              subjects: [
+                { name: "Project Phase II", score: 95 },
+                { name: "Entrepreneurship", score: 90 },
+                { name: "Elective II", score: 89 },
+                { name: "Seminar", score: 94 }
+              ]
+            }
+          ]
+        }
+      ]
     }
   };
-  
-  // Function to determine the color based on the score
-  const getScoreColor = (score: number) => {
+
+  const getScoreColor = (score) => {
     if (score >= 95) return "bg-green-500";
     if (score >= 90) return "bg-green-400";
     if (score >= 85) return "bg-green-300";
@@ -44,26 +155,34 @@ const Academic = () => {
     if (score >= 75) return "bg-orange-300";
     return "bg-red-500";
   };
-  
+
+  const getGpaColor = (gpa) => {
+    const gpaNum = parseFloat(gpa);
+    if (gpaNum >= 9.5) return "text-green-500";
+    if (gpaNum >= 9.0) return "text-green-400";
+    if (gpaNum >= 8.5) return "text-green-300";
+    if (gpaNum >= 8.0) return "text-orange-400";
+    if (gpaNum >= 7.5) return "text-orange-300";
+    return "text-red-500";
+  };
+
   return (
     <div className="min-h-screen bg-background text-foreground flex">
       <Sidebar />
-      
       <div className="flex-1 ml-20 p-10">
         <Header />
-        
         <div className="max-w-4xl mx-auto">
           <SectionHeader title="Academic Performance" />
-          
-          {/* School Information Card */}
-          <Card className="mb-8">
-            <CardHeader className="flex flex-row items-center space-x-4">
+
+          {/* India International School Card */}
+          <Card className="mb-8 shadow-md">
+            <CardHeader className="flex flex-row items-center space-x-4 bg-primary/5">
               <div className="p-2 bg-primary/10 rounded-full">
                 <School size={24} className="text-primary" />
               </div>
               <CardTitle>India International School</CardTitle>
             </CardHeader>
-            <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6">
               <div className="col-span-1 md:col-span-2">
                 <h3 className="text-lg font-semibold mb-3">Why I Chose IIS for my 10th and 12th</h3>
                 <p className="text-muted-foreground mb-3">
@@ -74,9 +193,9 @@ const Academic = () => {
                 </p>
               </div>
               <div className="col-span-1">
-                <div className="rounded-lg overflow-hidden h-full">
-                  <img 
-                    src="https://images.unsplash.com/photo-1488972685288-c3fd157d7c7a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                <div className="rounded-lg overflow-hidden h-full shadow-md">
+                  <img
+                    src="https://i.postimg.cc/MpjjnHrX/Chat-GPT-Image-May-3-2025-05-45-44-PM.png"
                     alt="India International School" 
                     className="w-full h-full object-cover"
                   />
@@ -84,23 +203,24 @@ const Academic = () => {
               </div>
             </CardContent>
           </Card>
-          
-          <div className="grid grid-cols-1 gap-8 mb-8">
-            {/* 10th Grade Card with Modern Bar Chart Style */}
-            <Card>
-              <CardHeader className="flex flex-row items-center space-x-4">
-                <div className="p-2 bg-primary/10 rounded-full">
-                  <BarChart size={24} className="text-primary" />
+
+          {/* 10th Grade Card - Modern Horizontal Style */}
+          <Card className="mb-8 shadow-md overflow-hidden">
+            <div className="flex flex-col md:flex-row">
+              <div className="md:w-1/3 p-6 bg-muted/20">
+                <div className="flex items-center mb-4">
+                  <div className="p-2 bg-primary/10 rounded-full mr-3">
+                    <BarChart size={24} className="text-primary" />
+                  </div>
+                  <h3 className="text-xl font-bold">10th Grade</h3>
                 </div>
-                <CardTitle>10th Grade Mark Card</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="mb-4">
+                <div className="space-y-2">
                   <p><strong>School:</strong> {academicData.tenthGrade.school}</p>
                   <p><strong>Year:</strong> {academicData.tenthGrade.year}</p>
                   <p><strong>Overall Score:</strong> {academicData.tenthGrade.score}</p>
                 </div>
-                
+              </div>
+              <div className="md:w-2/3 p-6">
                 <div className="space-y-6">
                   {academicData.tenthGrade.subjects.map((subject) => (
                     <div key={subject.name} className="space-y-2">
@@ -108,43 +228,50 @@ const Academic = () => {
                         <span className="font-medium">{subject.name}</span>
                         <span className="font-medium">{subject.score}%</span>
                       </div>
-                      <Progress 
-                        value={subject.score} 
-                        className="h-3" 
+                      <Progress
+                        value={subject.score}
+                        className="h-3"
                         aria-label={`${subject.name} score: ${subject.score}%`}
-                        style={{ 
-                          backgroundColor: "var(--muted)" 
-                        }}
                       >
-                        <div 
-                          className={`h-full ${getScoreColor(subject.score)}`} 
-                          style={{ 
-                            width: `${subject.score}%`,
-                            borderRadius: "inherit"
-                          }}
+                        <div
+                           className={`h-full ${getScoreColor(subject.score)}`}
+                          style={{ width: `${subject.score}%`, borderRadius: "inherit" }}
                         />
                       </Progress>
                     </div>
                   ))}
+                  
+                  <div className="pt-4 mt-6 border-t flex items-center justify-between">
+                    <div className="flex items-center">
+                      <Award className="mr-2 text-primary" size={20} />
+                      <span className="font-semibold">Overall GPA:</span>
+                    </div>
+                    <span className={`text-xl font-bold ${getGpaColor(academicData.tenthGrade.gpa)}`}>
+                      {academicData.tenthGrade.gpa}/10.0
+                    </span>
+                  </div>
                 </div>
-              </CardContent>
-            </Card>
-            
-            {/* 12th Grade Card with Modern Bar Chart Style */}
-            <Card>
-              <CardHeader className="flex flex-row items-center space-x-4">
-                <div className="p-2 bg-primary/10 rounded-full">
-                  <BarChart size={24} className="text-primary" />
+              </div>
+            </div>
+          </Card>
+
+          {/* 12th Grade Card - Modern Horizontal Style */}
+          <Card className="mb-8 shadow-md overflow-hidden">
+            <div className="flex flex-col md:flex-row">
+              <div className="md:w-1/3 p-6 bg-muted/20">
+                <div className="flex items-center mb-4">
+                  <div className="p-2 bg-primary/10 rounded-full mr-3">
+                    <BarChart size={24} className="text-primary" />
+                  </div>
+                  <h3 className="text-xl font-bold">12th Grade</h3>
                 </div>
-                <CardTitle>12th Grade Mark Card</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="mb-4">
+                <div className="space-y-2">
                   <p><strong>School:</strong> {academicData.twelfthGrade.school}</p>
                   <p><strong>Year:</strong> {academicData.twelfthGrade.year}</p>
                   <p><strong>Overall Score:</strong> {academicData.twelfthGrade.score}</p>
                 </div>
-                
+              </div>
+              <div className="md:w-2/3 p-6">
                 <div className="space-y-6">
                   {academicData.twelfthGrade.subjects.map((subject) => (
                     <div key={subject.name} className="space-y-2">
@@ -152,28 +279,118 @@ const Academic = () => {
                         <span className="font-medium">{subject.name}</span>
                         <span className="font-medium">{subject.score}%</span>
                       </div>
-                      <Progress 
-                        value={subject.score} 
-                        className="h-3" 
+                      <Progress
+                        value={subject.score}
+                        className="h-3"
                         aria-label={`${subject.name} score: ${subject.score}%`}
-                        style={{ 
-                          backgroundColor: "var(--muted)" 
-                        }}
                       >
-                        <div 
-                          className={`h-full ${getScoreColor(subject.score)}`} 
-                          style={{ 
-                            width: `${subject.score}%`,
-                            borderRadius: "inherit"
-                          }}
+                        <div
+                           className={`h-full ${getScoreColor(subject.score)}`}
+                          style={{ width: `${subject.score}%`, borderRadius: "inherit" }}
                         />
                       </Progress>
                     </div>
                   ))}
+                  
+                  <div className="pt-4 mt-6 border-t flex items-center justify-between">
+                    <div className="flex items-center">
+                      <Award className="mr-2 text-primary" size={20} />
+                      <span className="font-semibold">Overall GPA:</span>
+                    </div>
+                    <span className={`text-xl font-bold ${getGpaColor(academicData.twelfthGrade.gpa)}`}>
+                      {academicData.twelfthGrade.gpa}/10.0
+                    </span>
+                  </div>
                 </div>
-              </CardContent>
+              </div>
+            </div>
+          </Card>
+
+          {/* Manipal University Card */}
+          <Card className="mb-8 shadow-md">
+            <CardHeader className="flex flex-row items-center space-x-4 bg-primary/5">
+              <div className="p-2 bg-primary/10 rounded-full">
+                <School size={24} className="text-primary" />
+              </div>
+              <CardTitle>Manipal University, UAE</CardTitle>
+            </CardHeader>
+            <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6">
+              <div className="col-span-1 md:col-span-2">
+                <h3 className="text-lg font-semibold mb-3">My Journey at Manipal University</h3>
+                <p className="text-muted-foreground whitespace-pre-line">
+                  {academicData.manipalUniversity.description}
+                </p>
+              </div>
+              <div className="col-span-1">
+                <div className="rounded-lg overflow-hidden h-full shadow-md">
+                  <img
+                    src="https://i.postimg.cc/V6Y6WWmZ/manipal.png"
+                    alt="Manipal University" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Manipal University Year Cards - Modern Horizontal Style */}
+          {academicData.manipalUniversity.years.map((yearData) => (
+            <Card key={yearData.year} className="mb-8 shadow-md overflow-hidden">
+              <div className="flex flex-col">
+                <div className="p-6 bg-primary/5">
+                  <div className="flex items-center">
+                    <div className="p-2 bg-primary/10 rounded-full mr-3">
+                      <GraduationCap size={24} className="text-primary" />
+                    </div>
+                    <h3 className="text-xl font-bold">{yearData.year}</h3>
+                  </div>
+                </div>
+
+                {/* Semester Cards */}
+                {yearData.semesters.map((sem, index) => (
+                  <div key={sem.name} className={index > 0 ? "border-t border-border" : ""}>
+                    <div className="flex flex-col md:flex-row">
+                      <div className="md:w-1/4 p-6 bg-muted/5">
+                        <h4 className="font-semibold text-lg">{sem.name}</h4>
+                      </div>
+                      <div className="md:w-3/4 p-6">
+                        <div className="space-y-6">
+                          {sem.subjects.map((subject) => (
+                            <div key={subject.name} className="space-y-2">
+                              <div className="flex justify-between">
+                                <span className="font-medium">{subject.name}</span>
+                                <span className="font-medium">{subject.score}%</span>
+                              </div>
+                              <Progress
+                                value={subject.score}
+                                className="h-3"
+                                aria-label={`${subject.name} score: ${subject.score}%`}
+                              >
+                                <div
+                                   className={`h-full ${getScoreColor(subject.score)}`}
+                                  style={{ width: `${subject.score}%`, borderRadius: "inherit" }}
+                                />
+                              </Progress>
+                            </div>
+                          ))}
+                          
+                          <div className="pt-4 mt-6 border-t flex items-center justify-between">
+                            <div className="flex items-center">
+                              <Award className="mr-2 text-primary" size={20} />
+                              <span className="font-semibold">Semester GPA:</span>
+                            </div>
+                            <span className={`text-xl font-bold ${getGpaColor(sem.gpa)}`}>
+                              {sem.gpa}/10.0
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </Card>
-          </div>
+          ))}
         </div>
       </div>
     </div>

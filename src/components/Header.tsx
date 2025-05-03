@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Search, User, ThumbsUp } from 'lucide-react';
 import { Input } from '@/components/ui/input';
@@ -13,6 +12,10 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ username = "Mohammed Anas" }) => {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
+  
+  const handleExploreClick = () => {
+    window.open("https://precious-pudding-d8893b.netlify.app/", "_blank");
+  };
   
   return (
     <div className="mb-8">
@@ -44,10 +47,13 @@ const Header: React.FC<HeaderProps> = ({ username = "Mohammed Anas" }) => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
               <h2 className="text-3xl font-bold mb-2">Featured Project</h2>
-              <p className="text-white/80 mb-6">Check out the latest design trends and get inspired for your next project.</p>
+              <p className="text-white/80 mb-6">Explore the future of human-machine interaction with EchoBioNix—where smart gloves bring bionic control to life.</p>
               
               <div className="flex items-center gap-4 mb-8">
-                <Button className="rounded-full bg-white text-red-500 hover:bg-white/90 px-6">
+                <Button 
+                  className="rounded-full bg-white text-red-500 hover:bg-white/90 px-6" 
+                  onClick={handleExploreClick}
+                >
                   <Search size={16} className="mr-2" />
                   Explore now
                 </Button>
@@ -86,11 +92,28 @@ const Header: React.FC<HeaderProps> = ({ username = "Mohammed Anas" }) => {
             <div className="hidden md:flex items-center justify-center">
               <div className="relative">
                 <div className="w-32 h-32 rounded-full bg-gradient-to-br from-pink-500 via-red-500 to-yellow-500 opacity-30 blur-2xl absolute"></div>
-                <img 
-                  src="https://images.unsplash.com/photo-1618477388954-7852f32655ec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" 
-                  alt="Character artwork" 
-                  className="relative z-10 h-48 object-cover"
-                />
+                
+                {/* 3D curved image effect */}
+                <div className="relative z-10 transform rotate-6 hover:rotate-0 transition-transform duration-300">
+                  {/* Image with curved shape */}
+                  <div className="overflow-hidden rounded-3xl shadow-2xl bg-gradient-to-r from-red-500 to-copper-500 p-1">
+                    {/* Inner container with image */}
+                    <div className="overflow-hidden rounded-2xl transform scale-105 transition-all duration-500 hover:scale-110">
+                      <img 
+                        src="https://i.postimg.cc/kMSSMfDK/arm.jpg" 
+                        alt="Character artwork" 
+                        className="relative z-10 h-48 object-cover transform transition-all duration-300"
+                      />
+                      
+                      {/* Highlight overlays */}
+                      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-white/20 to-transparent pointer-events-none"></div>
+                      <div className="absolute bottom-0 right-0 w-3/4 h-1/2 bg-gradient-to-tl from-black/30 to-transparent pointer-events-none rounded-bl-2xl"></div>
+                    </div>
+                  </div>
+                  
+                  {/* Shadow underneath */}
+                  <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-4/5 h-4 bg-black/40 blur-md rounded-full z-0"></div>
+                </div>
               </div>
             </div>
           </div>

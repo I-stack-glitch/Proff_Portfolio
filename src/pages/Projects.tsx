@@ -14,24 +14,25 @@ const Projects = () => {
   // All projects
   const allProjects = [
     {
-      title: "Portfolio Redesign",
-      description: "A complete redesign of my professional portfolio using React and Tailwind CSS.",
+      title: "EchoBioNix",
+      description: "EchoBioNix is a wearable robotics project that combines a smart glove with a bionic arm, using flex sensors and servo motors to replicate human finger movements in real time—bridging the gap between gesture control and assistive robotics.",
       tags: ["React", "Tailwind CSS", "UI/UX"],
       featured: true,
-      image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+      image: "https://i.postimg.cc/K88rYB6b/echo.jpg"
     },
     {
-      title: "E-commerce Platform",
-      description: "A full-featured e-commerce platform with product management, cart functionality, and payment processing.",
+      title: "Jarvis AI Voice Assistant",
+      description: "JARVIS is a custom AI-powered voice assistant designed to automate desktop tasks, control apps, play media, and generate content—integrating advanced language models, speech synthesis, and real-time command execution for a seamless user experience.",
       tags: ["React", "Node.js", "MongoDB"],
-      image: "https://images.unsplash.com/photo-1557821552-17105176677c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80"
+      image: "https://i.ytimg.com/vi/0Wg5CdZpJks/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGDQgWyhyMA8=&rs=AOn4CLAoENSKEjzN2am_sZa1mphpubkWYw"
     },
     {
-      title: "Weather App",
-      description: "A simple weather application that fetches real-time weather data.",
-      tags: ["JavaScript", "API Integration"],
-    },
-    {
+      title: "Upcoming Projects....",
+      description: "------------------------------------",
+      tags: ["Not Applicable", "Not Applicable"],
+      image: "https://i.postimg.cc/xCfbs292/questionmark.jpg"
+    }
+    /*{
       title: "Task Manager",
       description: "A productivity tool for managing tasks and projects with drag-and-drop functionality.",
       tags: ["React", "TypeScript", "Firebase"],
@@ -59,7 +60,7 @@ const Projects = () => {
       description: "A platform for users to discover, save, and share their favorite recipes.",
       tags: ["React Native", "Redux", "API Integration"],
       image: "https://images.unsplash.com/photo-1556911220-bff31c812dba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-    }
+    }*/
   ];
 
   // Filter projects based on search query
@@ -95,14 +96,18 @@ const Projects = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
             {filteredProjects.length > 0 ? (
               filteredProjects.map((project, index) => (
+                project.title === "EchoBioNix" ? (
                 <ProjectCard
                   key={index}
                   title={project.title}
                   description={project.description}
                   image={project.image}
                   tags={project.tags}
-                  featured={project.featured}
+                  
                 />
+                ) : (<ProjectCard key={index} title={project.title} description={project.description} image={project.image} tags={project.tags}/>)
+
+                
               ))
             ) : (
               <div className="col-span-full text-center py-12">

@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { Badge } from '@/components/ui/badge';
 
 interface ProjectCardProps {
@@ -8,6 +8,7 @@ interface ProjectCardProps {
   image?: string;
   tags: string[];
   featured?: boolean;
+  children?: ReactNode;
   size?: 'sm' | 'lg';
 }
 
@@ -17,10 +18,20 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   image, 
   tags, 
   featured = false,
-  size = 'lg' 
+  size = 'lg',
+  children,
 }) => {
+
+  const isEchoBioNix = title === "EchoBioNix";
+  const echoBioNixUrl = "https://precious-pudding-d8893b.netlify.app/";
+
   return (
-    <div className={`portfolio-card relative overflow-hidden ${size === 'lg' ? 'col-span-2' : ''}`}>
+    <div className={`portfolio-card relative overflow-hidden ${size === 'lg' ? 'col-span-2' : ''}`}
+        onClick={isEchoBioNix ? () => window.open(echoBioNixUrl, "_blank", "noopener,noreferrer") : undefined}
+        style={{ cursor: isEchoBioNix ? 'pointer' : 'default' }}
+      >
+
+
       {featured && (
         <Badge 
           className="absolute top-4 left-4 bg-primary hover:bg-primary text-white"
@@ -50,6 +61,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             </Badge>
           ))}
         </div>
+
       </div>
     </div>
   );

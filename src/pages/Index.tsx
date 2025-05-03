@@ -15,45 +15,39 @@ const Index = () => {
   // Sample projects data
   const featuredProjects = [
     {
-      title: "Portfolio Redesign",
-      description: "A complete redesign of my professional portfolio using React and Tailwind CSS.",
+      title: "EchoBioNix",
+      description: "EchoBioNix is a wearable robotics project that combines a smart glove with a bionic arm, using flex sensors and servo motors to replicate human finger movements in real time—bridging the gap between gesture control and assistive robotics.",
       tags: ["React", "Tailwind CSS", "UI/UX"],
       featured: true,
-      image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+      image: "https://i.postimg.cc/K88rYB6b/echo.jpg"
     },
     {
-      title: "E-commerce Platform",
-      description: "A full-featured e-commerce platform with product management, cart functionality, and payment processing.",
+      title: "Jarvis AI Voice Assistant",
+      description: "JARVIS is a custom AI-powered voice assistant designed to automate desktop tasks, control apps, play media, and generate content—integrating advanced language models, speech synthesis, and real-time command execution for a seamless user experience.",
       tags: ["React", "Node.js", "MongoDB"],
-      image: "https://images.unsplash.com/photo-1557821552-17105176677c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80"
+      image: "https://i.ytimg.com/vi/0Wg5CdZpJks/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGDQgWyhyMA8=&rs=AOn4CLAoENSKEjzN2am_sZa1mphpubkWYw"
     },
     {
-      title: "Weather App",
-      description: "A simple weather application that fetches real-time weather data.",
-      tags: ["JavaScript", "API Integration"],
-      size: "sm" as "sm"
+      title: "Upcoming Projects....",
+      description: "------------------",
+      tags: ["NA", "NA"],
+      size: "sm"
     },
     {
-      title: "Task Manager",
-      description: "A productivity tool for managing tasks and projects with drag-and-drop functionality.",
-      tags: ["React", "TypeScript", "Firebase"],
-      size: "sm" as "sm"
+      title: "Upcoming Projects.......",
+      description: "-----------------------",
+      tags: ["NA", "NA", "NA"],
+      size: "sm"
     }
   ];
   
   // Sample recent projects
   const recentProjects = [
     {
-      title: "Blog Platform",
-      description: "A customizable blog platform with Markdown support and SEO optimization.",
+      title: "EchoBioNix",
+      description: "EchoBioNix is a wearable robotics project that combines a smart glove with a bionic arm, using flex sensors and servo motors to replicate human finger movements in real time—bridging the gap between gesture control and assistive robotics.",
       tags: ["Next.js", "Contentful", "SEO"],
-      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80"
-    },
-    {
-      title: "Dashboard UI",
-      description: "A responsive admin dashboard with customizable widgets and data visualization.",
-      tags: ["React", "D3.js", "Tailwind CSS"],
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+      image: "https://i.postimg.cc/K88rYB6b/echo.jpg"
     }
   ];
   
@@ -78,9 +72,9 @@ const Index = () => {
 
   // Profile data
   const profileData = {
-    name: "John Designer",
-    role: "UI/UX Designer & Frontend Developer",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80"
+    name: "Mohammed Anas",
+    role: "Software and Robotics Eng",
+    image: "https://i.postimg.cc/C11ZVsXB/Reshot.jpg"
   };
   
   return (
