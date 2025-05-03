@@ -6,7 +6,11 @@ import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { useLocation } from 'react-router-dom';
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  username?: string;
+}
+
+const Header: React.FC<HeaderProps> = ({ username = "Mohammed Anas" }) => {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
   
@@ -16,7 +20,7 @@ const Header: React.FC = () => {
       <div className="flex justify-between items-center mb-6">
         <div>
           <p className="text-muted-foreground">Good evening,</p>
-          <h1 className="text-2xl font-bold text-white">MOHAMMED ANAS</h1>
+          <h1 className="text-2xl font-bold text-white">{username}</h1>
         </div>
         
         <div className="flex items-center gap-4">
