@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Home, Briefcase, User, Mail, GraduationCap, Code, Settings } from 'lucide-react';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
 const Sidebar = () => {
   const navigate = useNavigate();
@@ -35,23 +35,21 @@ const Sidebar = () => {
         </div>
       </div>
       
-      <TooltipProvider>
-        {menuItems.map((item) => (
-          <Tooltip key={item.path} delayDuration={300}>
-            <TooltipTrigger asChild>
-              <div 
-                className={`sidebar-icon ${isActive(item.path) ? 'bg-sidebar-accent text-primary' : ''} hover:bg-sidebar-accent transition-colors cursor-pointer`}
-                onClick={() => handleNavigation(item.path)}
-              >
-                <item.icon size={24} />
-              </div>
-            </TooltipTrigger>
-            <TooltipContent side="right">
-              <p>{item.tooltip}</p>
-            </TooltipContent>
-          </Tooltip>
-        ))}
-      </TooltipProvider>
+      {menuItems.map((item) => (
+        <Tooltip key={item.path} delayDuration={300}>
+          <TooltipTrigger asChild>
+            <div 
+              className={`sidebar-icon ${isActive(item.path) ? 'bg-sidebar-accent text-primary' : ''} hover:bg-sidebar-accent transition-colors cursor-pointer`}
+              onClick={() => handleNavigation(item.path)}
+            >
+              <item.icon size={24} />
+            </div>
+          </TooltipTrigger>
+          <TooltipContent side="right">
+            <p>{item.tooltip}</p>
+          </TooltipContent>
+        </Tooltip>
+      ))}
       
       <div className="mt-auto">
         <Tooltip delayDuration={300}>
