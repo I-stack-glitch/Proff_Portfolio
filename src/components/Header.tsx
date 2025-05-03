@@ -18,14 +18,14 @@ const Header: React.FC<HeaderProps> = ({ username = "Mohammed Anas" }) => {
   };
   
   return (
-    <div className="mb-8">
+    <div className="mb-8 px-4 md:px-0">
       {/* Top header with greeting and search */}
-      <div className="flex justify-between items-center mb-6">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
         <div>
-          <p className="text-muted-foreground">Good evening,</p>
-          <h1 className="text-2xl font-bold text-white">{username}</h1>
+          <p className="text-muted-foreground text-sm md:text-base">Good evening,</p>
+          <h1 className="text-xl md:text-2xl font-bold text-white">{username}</h1>
         </div>
-        
+
         <div className="flex items-center gap-4">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" size={18} />
@@ -43,14 +43,14 @@ const Header: React.FC<HeaderProps> = ({ username = "Mohammed Anas" }) => {
       
       {/* Featured content section with warm gradient - only show on home page */}
       {isHomePage && (
-        <div className="rounded-xl p-6 bg-gradient-to-r from-copper-500 to-red-500 text-white mb-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="rounded-xl p-4 md:p-6 bg-gradient-to-r from-copper-500 to-red-500 text-white mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
             <div>
-              <h2 className="text-3xl font-bold mb-2">Featured Project</h2>
-              <p className="text-white/80 mb-6">Explore the future of human-machine interaction with EchoBioNix—where smart gloves bring bionic control to life.</p>
+              <h2 className="text-2xl md:text-3xl font-bold mb-2">Featured Project</h2>
+              <p className="text-white/80 mb-4 md:mb-6 text-sm md:text-base">Explore the future of human-machine interaction with EchoBioNix—where smart gloves bring bionic control to life.</p>
               
-              <div className="flex items-center gap-4 mb-8">
-                <Button 
+              <div className="flex flex-col md:flex-row items-start md:items-center gap-4 mb-4 md:mb-8">
+                <Button
                   className="rounded-full bg-white text-red-500 hover:bg-white/90 px-6" 
                   onClick={handleExploreClick}
                 >
@@ -67,10 +67,10 @@ const Header: React.FC<HeaderProps> = ({ username = "Mohammed Anas" }) => {
                   </Button>
                 </div>
               </div>
-              
-              <div className="flex items-center gap-2">
+
+              <div className="flex items-center gap-2 flex-wrap">
                 <ThumbsUp size={16} className="text-white/80" />
-                <span className="text-sm text-white/80">120 people liked this</span>
+                <span className="text-sm text-white/80 mr-2">120 people liked this</span>
                 
                 <div className="flex -space-x-2 ml-2">
                   <Avatar className="border-2 border-copper-500 w-6 h-6">
@@ -100,9 +100,9 @@ const Header: React.FC<HeaderProps> = ({ username = "Mohammed Anas" }) => {
                     {/* Inner container with image */}
                     <div className="overflow-hidden rounded-2xl transform scale-105 transition-all duration-500 hover:scale-110">
                       <img 
-                        src="https://i.postimg.cc/kMSSMfDK/arm.jpg" 
+                        src="https://i.postimg.cc/kMSSMfDK/arm.jpg"
                         alt="Character artwork" 
-                        className="relative z-10 h-48 object-cover transform transition-all duration-300"
+                        className="relative z-10 h-48 object-cover transform transition-all duration-300 w-full"
                       />
                       
                       {/* Highlight overlays */}

@@ -26,7 +26,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   const echoBioNixUrl = "https://precious-pudding-d8893b.netlify.app/";
 
   return (
-    <div className={`portfolio-card relative overflow-hidden ${size === 'lg' ? 'col-span-2' : ''}`}
+    <div className={`portfolio-card relative overflow-hidden ${size === 'lg' ? 'md:col-span-2' : ''}`}
         onClick={isEchoBioNix ? () => window.open(echoBioNixUrl, "_blank", "noopener,noreferrer") : undefined}
         style={{ cursor: isEchoBioNix ? 'pointer' : 'default' }}
       >
@@ -43,15 +43,15 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       <div className="flex flex-col h-full">
         {image && (
           <div className="mb-4 rounded-xl overflow-hidden">
-            <img 
-              src={image} 
-              alt={title} 
-              className="w-full h-48 object-cover"
-            />
+            <img
+              src={image}
+              alt={title}
+              className="w-full h-40 md:h-48 object-cover"
+              />
           </div>
         )}
         
-        <h3 className="text-xl font-bold mb-2">{title}</h3>
+        <h3 className="text-lg md:text-xl font-bold mb-2">{title}</h3>
         <p className="text-muted-foreground mb-4">{description}</p>
         
         <div className="flex flex-wrap gap-2 mt-auto">
