@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Sidebar from '@/components/Sidebar';
 import Header from '@/components/Header';
@@ -89,7 +88,7 @@ const Index = () => {
       <Sidebar />
       
       <div className="flex-1 ml-20 p-10">
-        <Header username="Designer" />
+        <Header />
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="md:col-span-2">
