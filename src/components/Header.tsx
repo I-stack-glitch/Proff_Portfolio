@@ -5,15 +5,16 @@ import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { useLocation } from 'react-router-dom';
 
+// Define the HeaderProps interface to include the new imageUrl prop
 interface HeaderProps {
   username?: string;
+  imageUrl?: string;
 }
 
-const Header: React.FC<HeaderProps> = ({ username = "Mohammed Anas" }) => {
+const Header: React.FC<HeaderProps> = ({ username = "Mohammed Anas", imageUrl = "https://i.postimg.cc/C11ZVsXB/Reshot.jpg" }) => {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
-  
-  const handleExploreClick = () => {
+   const handleExploreClick = () => {
     window.open("https://precious-pudding-d8893b.netlify.app/", "_blank");
   };
   
@@ -28,18 +29,15 @@ const Header: React.FC<HeaderProps> = ({ username = "Mohammed Anas" }) => {
           </h1>
         </div>
 
-        <div className="flex items-center gap-4">
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" size={18} />
-            <Input 
-              className="bg-white/10 border-none pl-10 rounded-full w-64" 
-              placeholder="Search projects..." 
-            />
-          </div>
-          
-          <div className="w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center">
-            <User size={20} className="text-white" />
-          </div>
+        <div className="flex items-center gap-4">          
+            <div className="w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center">
+              {imageUrl ? (
+                <img src={imageUrl} alt="User" className="w-full h-full rounded-full object-cover" />
+              ) : (
+                <User size={20} className="text-white" />
+              )}
+            </div>
+
         </div>
       </div>
       
@@ -48,7 +46,8 @@ const Header: React.FC<HeaderProps> = ({ username = "Mohammed Anas" }) => {
         <div className="rounded-xl p-4 md:p-6 bg-gradient-to-r from-copper-500 to-red-500 text-white mb-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
             <div>
-              <h2 className="text-2xl md:text-3xl font-bold mb-2">Featured Project</h2>
+              <h2 className="text-2xl md:text-3xl font-bold mb-2">Featured Project:</h2>
+              <h4 className="text-2xl md:text-3xl font-bold mb-2 font-[Orbitron]">EchoBioNix</h4>
               <p className="text-white/80 mb-4 md:mb-6 text-sm md:text-base">Explore the future of human-machine interaction with EchoBioNix—where smart gloves bring bionic control to life.</p>
               
               <div className="flex flex-col md:flex-row items-start md:items-center gap-4 mb-4 md:mb-8">
