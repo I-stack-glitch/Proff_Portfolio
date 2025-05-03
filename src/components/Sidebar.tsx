@@ -31,7 +31,7 @@ const Sidebar = () => {
     <div className="fixed left-0 top-0 h-screen w-16 md:w-20 bg-sidebar flex flex-col items-center py-4 md:py-8 gap-4 md:gap-6 overflow-y-auto">
       <div className="mb-6">
         <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-copper-400 rounded-full flex items-center justify-center text-white font-bold text-2xl">
-          P
+          M
         </div>
       </div>
       
