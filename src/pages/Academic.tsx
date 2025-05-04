@@ -256,8 +256,11 @@ const Academic = () => {
                 </p>
               </div>
               <div className="col-span-1">
-                <div 
-                  className="rounded-lg overflow-hidden h-full shadow-md cursor-pointer"
+                <a 
+                  href="https://iiss.ae" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="block rounded-lg overflow-hidden h-full shadow-md cursor-pointer"
                   onMouseMove={(e) => {
                     const card = e.currentTarget;
                     const rect = card.getBoundingClientRect();
@@ -291,7 +294,7 @@ const Academic = () => {
                     className="absolute inset-0 bg-gradient-to-tr from-black/20 via-transparent to-white/30 opacity-0 hover:opacity-100"
                     style={{ transition: 'opacity 0.3s ease' }}
                   />
-                </div>
+                </a>
               </div>
             </CardContent>
           </Card>
@@ -414,8 +417,11 @@ const Academic = () => {
                 </p>
               </div>
               <div className="col-span-1">
-                <div 
-                  className="rounded-lg overflow-hidden h-full shadow-md cursor-pointer"
+                <a 
+                  href="https://manipaldubai.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="block rounded-lg overflow-hidden h-full shadow-md cursor-pointer"
                   onMouseMove={(e) => {
                     const card = e.currentTarget;
                     const rect = card.getBoundingClientRect();
@@ -449,7 +455,7 @@ const Academic = () => {
                     className="absolute inset-0 bg-gradient-to-tr from-black/20 via-transparent to-white/30 opacity-0 hover:opacity-100"
                     style={{ transition: 'opacity 0.3s ease' }}
                   />
-                </div>
+                </a>
               </div>
             </CardContent>
           </Card>

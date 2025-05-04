@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import Sidebar from '@/components/Sidebar';
 import Header from '@/components/Header';
 import SectionHeader from '@/components/SectionHeader';
@@ -6,11 +6,13 @@ import ProjectCard from '@/components/ProjectCard';
 import StatsCard from '@/components/StatsCard';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
-import { Briefcase, Code, Star, User } from 'lucide-react';
+import { Briefcase, Code, Star, User, Github, Linkedin, Twitter, Instagram } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const Index = () => {
   const navigate = useNavigate();
+  const profileCardRef = useRef(null);
+  const profileContentRef = useRef(null);
   
   // Sample projects data
   const featuredProjects = [
@@ -77,6 +79,40 @@ const Index = () => {
     image: "https://i.postimg.cc/C11ZVsXB/Reshot.jpg"
   };
   
+  // 3D tilt effect for profile card
+  useEffect(() => {
+    const card = profileCardRef.current;
+    const content = profileContentRef.current;
+    
+    if (!card || !content) return;
+    
+    const maxTilt = 15;
+    const perspective = 1000;
+    
+    const handleMouseMove = (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const tiltX = ((y / rect.height) * 2 - 1) * -maxTilt;
+      const tiltY = ((x / rect.width) * 2 - 1) * maxTilt;
+      
+      content.style.transform = `perspective(${perspective}px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(1.05, 1.05, 1.05)`;
+    };
+    
+    const handleMouseLeave = () => {
+      content.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+    };
+    
+    card.addEventListener('mousemove', handleMouseMove);
+    card.addEventListener('mouseleave', handleMouseLeave);
+    
+    return () => {
+      card.removeEventListener('mousemove', handleMouseMove);
+      card.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, []);
+  
   return (
     <div className="min-h-screen bg-background text-foreground flex">
       <Sidebar />
@@ -86,26 +122,56 @@ const Index = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="md:col-span-2">
-            {/* Profile Hero Section */}
-            <div className="mb-8 p-6 rounded-xl bg-gradient-to-br from-primary/5 to-copper-400/10 border border-primary/10 flex items-center gap-8">
-              <div className="relative">
-                <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-red-500 to-copper-400 blur"></div>
-                <Avatar className="w-32 h-32 border-4 border-background">
-                  {profileData.image ? (
-                    <AvatarImage src={profileData.image} alt={profileData.name} />
-                  ) : (
-                    <AvatarFallback className="bg-muted text-4xl">
-                      <User size={48} />
-                    </AvatarFallback>
-                  )}
-                </Avatar>
-              </div>
-              <div>
-                <h2 className="text-3xl font-bold">{profileData.name}</h2>
-                <p className="text-muted-foreground mb-4">{profileData.role}</p>
-                <Button onClick={() => navigate('/profile')} variant="outline" className="border-primary/20 hover:border-primary/40">
-                  View Profile
-                </Button>
+            {/* Profile Hero Section with 3D tilt effect */}
+            <div 
+              ref={profileCardRef}
+              className="mb-8 p-6 rounded-xl bg-gradient-to-br from-primary/5 to-copper-400/10 border border-primary/10 relative overflow-hidden"
+              style={{ 
+                transformStyle: 'preserve-3d',
+                perspective: '1000px',
+              }}
+            >
+              <div 
+                ref={profileContentRef}
+                className="flex items-center gap-8 transition-transform duration-300 ease-out"
+                style={{ 
+                  transformStyle: 'preserve-3d',
+                  transform: 'perspective(1000px)',
+                  transformOrigin: 'center center',
+                }}
+              >
+                <div className="relative cursor-pointer" onClick={() => navigate('/profile')}>
+                  <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-red-500 to-copper-400 blur"></div>
+                  <Avatar className="w-32 h-32 border-4 border-background">
+                    {profileData.image ? (
+                      <AvatarImage src={profileData.image} alt={profileData.name} />
+                    ) : (
+                      <AvatarFallback className="bg-muted text-4xl">
+                        <User size={48} />
+                      </AvatarFallback>
+                    )}
+                  </Avatar>
+                </div>
+                <div>
+                  <h2 className="text-3xl font-bold">{profileData.name}</h2>
+                  <p className="text-muted-foreground mb-4">{profileData.role}</p>
+                  
+                  {/* Social Media Icons */}
+                  <div className="flex space-x-4">
+                    <a href="https://github.com/I-stack-glitch" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                      <Github size={20} />
+                    </a>
+                    <a href="https://www.linkedin.com/in/mohammed-anas-b1197b264?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                      <Linkedin size={20} />
+                    </a>
+                    <a href="" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                      <Twitter size={20} />
+                    </a>
+                    <a href="https://www.instagram.com/ixm_mohammed/?__pwa=1" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                      <Instagram size={20} />
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
             

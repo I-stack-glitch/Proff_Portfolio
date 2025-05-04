@@ -28,7 +28,7 @@ interface StatsCardProps {
 
 const StatsCard: React.FC<StatsCardProps> = ({ totalHours, stats }) => {
   return (
-    <div className="portfolio-card p-4 md:p-6">
+    <div className="portfolio-card p-4 md:p-6 bg-[#1b1311]">
       <div className="flex justify-between items-center mb-4 md:mb-6">
         <h3 className="text-lg md:text-xl font-bold">Your Statistics</h3>
         <button className="text-secondary">→</button>

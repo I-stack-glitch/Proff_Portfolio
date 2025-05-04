@@ -1,7 +1,6 @@
-
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Home, Briefcase, User, Mail, GraduationCap, Code, Settings } from 'lucide-react';
+import { Home, User, GraduationCap, Code, Briefcase, Mail, Settings } from 'lucide-react';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
 const Sidebar = () => {
@@ -12,9 +11,9 @@ const Sidebar = () => {
   const menuItems = [
     { icon: Home, path: '/', tooltip: 'Home' },
     { icon: User, path: '/profile', tooltip: 'Profile' },
+    { icon: GraduationCap, path: '/academic', tooltip: 'Academics' },
+    { icon: Code, path: '/computer-science', tooltip: 'Computer Science' },
     { icon: Briefcase, path: '/projects', tooltip: 'Projects' },
-    { icon: GraduationCap, path: '/academic', tooltip: 'Academic Performance' },
-    { icon: Code, path: '/computer-science', tooltip: 'Why Computer Science' },
     { icon: Mail, path: '/contact', tooltip: 'Contact Me' },
   ];
 
