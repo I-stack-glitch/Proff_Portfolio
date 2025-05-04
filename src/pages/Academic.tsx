@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Sidebar from '@/components/Sidebar';
 import Header from '@/components/Header';
 import SectionHeader from '@/components/SectionHeader';
@@ -49,6 +49,7 @@ const Academic = () => {
             {
               name: "Semester 1",
               gpa: "8.6",
+              image: "https://i.postimg.cc/htbD6XD7/sem1.png",
               subjects: [
                 { name: "Engineering Mathematics", score: 88 },
                 { name: "Physics", score: 85 },
@@ -59,6 +60,7 @@ const Academic = () => {
             {
               name: "Semester 2",
               gpa: "8.8",
+              image: "https://i.postimg.cc/nhqHQ0Cm/Chat-GPT-Image-May-4-2025-03-49-02-PM.png",
               subjects: [
                 { name: "Engineering Chemistry", score: 86 },
                 { name: "Engineering Graphics", score: 89 },
@@ -74,6 +76,7 @@ const Academic = () => {
             {
               name: "Semester 3",
               gpa: "8.7",
+              image: "https://i.postimg.cc/44ry7KBr/Chat-GPT-Image-May-4-2025-03-50-21-PM.png",
               subjects: [
                 { name: "Data Structures", score: 90 },
                 { name: "Digital Electronics", score: 84 },
@@ -84,6 +87,7 @@ const Academic = () => {
             {
               name: "Semester 4",
               gpa: "8.9",
+              image: "https://i.postimg.cc/BnCnVm40/Chat-GPT-Image-May-4-2025-03-51-13-PM.png",
               subjects: [
                 { name: "Object-Oriented Programming", score: 92 },
                 { name: "Database Systems", score: 89 },
@@ -99,6 +103,7 @@ const Academic = () => {
             {
               name: "Semester 5",
               gpa: "8.9",
+              image: "https://i.postimg.cc/W43Tfj5G/Chat-GPT-Image-May-4-2025-03-52-51-PM.png",
               subjects: [
                 { name: "Design & Analysis of Algorithms", score: 91 },
                 { name: "Web Technologies", score: 90 },
@@ -109,6 +114,7 @@ const Academic = () => {
             {
               name: "Semester 6",
               gpa: "9.1",
+              image: "https://i.postimg.cc/ZRWY0Z3b/Chat-GPT-Image-May-4-2025-03-52-01-PM.png",
               subjects: [
                 { name: "Mobile Application Development", score: 92 },
                 { name: "Machine Learning", score: 94 },
@@ -124,6 +130,7 @@ const Academic = () => {
             {
               name: "Semester 7",
               gpa: "9.0",
+              image: "https://i.postimg.cc/JzRp8hVk/Chat-GPT-Image-May-4-2025-04-01-38-PM.png",
               subjects: [
                 { name: "Project Phase I", score: 93 },
                 { name: "Internet of Things", score: 90 },
@@ -134,6 +141,7 @@ const Academic = () => {
             {
               name: "Semester 8",
               gpa: "9.2",
+              image: "https://i.postimg.cc/5yMwmPfC/Chat-GPT-Image-May-4-2025-04-03-19-PM.png",
               subjects: [
                 { name: "Project Phase II", score: 95 },
                 { name: "Entrepreneurship", score: 90 },
@@ -166,6 +174,61 @@ const Academic = () => {
     return "text-red-500";
   };
 
+  // Create a component for the 3D hover effect image
+  const Image3DHover = ({ src, alt }) => {
+    const [transform, setTransform] = useState('perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1)');
+    const [transition, setTransition] = useState('transform 0.4s ease');
+    const [shadow, setShadow] = useState('0 10px 20px rgba(0,0,0,0.2)');
+
+    const handleMouseMove = (e) => {
+      const card = e.currentTarget;
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      
+      const rotateY = ((x - centerX) / centerX) * 15; // max 15 degrees
+      const rotateX = ((centerY - y) / centerY) * 15; // max 15 degrees
+      
+      setTransform(`perspective(1000px) rotateY(${rotateY}deg) rotateX(${rotateX}deg) scale(1.05)`);
+      setShadow(`0 20px 30px rgba(0,0,0,0.3), 
+                 ${rotateY/3}px ${-rotateX/3}px 10px rgba(0,0,0,0.2)`);
+    };
+
+    const handleMouseLeave = () => {
+      setTransform('perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1)');
+      setShadow('0 10px 20px rgba(0,0,0,0.2)');
+      setTransition('transform 0.6s ease, box-shadow 0.6s ease');
+    };
+
+    return (
+      <div 
+        className="rounded-lg overflow-hidden cursor-pointer relative"
+        style={{
+          transform,
+          transition,
+          boxShadow: shadow,
+          willChange: 'transform, box-shadow'
+        }}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+      >
+        <img
+          src={src}
+          alt={alt}
+          className="w-full h-auto object-cover"
+          style={{ transition: 'all 0.2s ease' }}
+        />
+        <div 
+          className="absolute inset-0 bg-gradient-to-tr from-black/20 via-transparent to-white/30 opacity-0 hover:opacity-100"
+          style={{ transition: 'opacity 0.3s ease' }}
+        />
+      </div>
+    );
+  };
+
   return (
     <div className="min-h-screen bg-background text-foreground flex">
       <Sidebar />
@@ -193,11 +256,40 @@ const Academic = () => {
                 </p>
               </div>
               <div className="col-span-1">
-                <div className="rounded-lg overflow-hidden h-full shadow-md">
+                <div 
+                  className="rounded-lg overflow-hidden h-full shadow-md cursor-pointer"
+                  onMouseMove={(e) => {
+                    const card = e.currentTarget;
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    const rotateY = ((x - centerX) / centerX) * 15;
+                    const rotateX = ((centerY - y) / centerY) * 15;
+                    
+                    card.style.transform = `perspective(1000px) rotateY(${rotateY}deg) rotateX(${rotateX}deg) scale(1.05)`;
+                    card.style.boxShadow = `0 20px 30px rgba(0,0,0,0.3), ${rotateY/3}px ${-rotateX/3}px 10px rgba(0,0,0,0.2)`;
+                    card.style.transition = 'transform 0.4s ease';
+                  }}
+                  onMouseLeave={(e) => {
+                    const card = e.currentTarget;
+                    card.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1)';
+                    card.style.boxShadow = '0 10px 20px rgba(0,0,0,0.2)';
+                    card.style.transition = 'transform 0.6s ease, box-shadow 0.6s ease';
+                  }}
+                >
                   <img
                     src="https://i.postimg.cc/MpjjnHrX/Chat-GPT-Image-May-3-2025-05-45-44-PM.png"
                     alt="India International School" 
                     className="w-full h-full object-cover"
+                    style={{ transition: 'all 0.2s ease' }}
+                  />
+                  <div 
+                    className="absolute inset-0 bg-gradient-to-tr from-black/20 via-transparent to-white/30 opacity-0 hover:opacity-100"
+                    style={{ transition: 'opacity 0.3s ease' }}
                   />
                 </div>
               </div>
@@ -322,18 +414,47 @@ const Academic = () => {
                 </p>
               </div>
               <div className="col-span-1">
-                <div className="rounded-lg overflow-hidden h-full shadow-md">
+                <div 
+                  className="rounded-lg overflow-hidden h-full shadow-md cursor-pointer"
+                  onMouseMove={(e) => {
+                    const card = e.currentTarget;
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    const rotateY = ((x - centerX) / centerX) * 15;
+                    const rotateX = ((centerY - y) / centerY) * 15;
+                    
+                    card.style.transform = `perspective(1000px) rotateY(${rotateY}deg) rotateX(${rotateX}deg) scale(1.05)`;
+                    card.style.boxShadow = `0 20px 30px rgba(0,0,0,0.3), ${rotateY/3}px ${-rotateX/3}px 10px rgba(0,0,0,0.2)`;
+                    card.style.transition = 'transform 0.4s ease';
+                  }}
+                  onMouseLeave={(e) => {
+                    const card = e.currentTarget;
+                    card.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1)';
+                    card.style.boxShadow = '0 10px 20px rgba(0,0,0,0.2)';
+                    card.style.transition = 'transform 0.6s ease, box-shadow 0.6s ease';
+                  }}
+                >
                   <img
                     src="https://i.postimg.cc/V6Y6WWmZ/manipal.png"
                     alt="Manipal University" 
                     className="w-full h-full object-cover"
+                    style={{ transition: 'all 0.2s ease' }}
+                  />
+                  <div 
+                    className="absolute inset-0 bg-gradient-to-tr from-black/20 via-transparent to-white/30 opacity-0 hover:opacity-100"
+                    style={{ transition: 'opacity 0.3s ease' }}
                   />
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          {/* Manipal University Year Cards - Modern Horizontal Style */}
+          {/* Manipal University Year Cards - With 3D hover effect on images */}
           {academicData.manipalUniversity.years.map((yearData) => (
             <Card key={yearData.year} className="mb-8 shadow-md overflow-hidden">
               <div className="flex flex-col">
@@ -351,7 +472,12 @@ const Academic = () => {
                   <div key={sem.name} className={index > 0 ? "border-t border-border" : ""}>
                     <div className="flex flex-col md:flex-row">
                       <div className="md:w-1/4 p-6 bg-muted/5">
-                        <h4 className="font-semibold text-lg">{sem.name}</h4>
+                        <h4 className="font-semibold text-lg mb-4">{sem.name}</h4>
+                        
+                        {/* 3D hover effect image */}
+                        <div className="mb-4">
+                          <Image3DHover src={sem.image} alt={`${sem.name} Image`} />
+                        </div>
                       </div>
                       <div className="md:w-3/4 p-6">
                         <div className="space-y-6">
