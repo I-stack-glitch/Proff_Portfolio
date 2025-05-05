@@ -4,6 +4,7 @@ import Header from '@/components/Header';
 import SectionHeader from '@/components/SectionHeader';
 import ProjectCard from '@/components/ProjectCard';
 import StatsCard from '@/components/StatsCard';
+import SkillsCard from '@/components/SkillsCard'; // Import the new SkillsCard component
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { Briefcase, Code, Star, User, Github, Linkedin, Twitter, Instagram } from 'lucide-react';
@@ -113,6 +114,12 @@ const Index = () => {
     };
   }, []);
   
+  // Function to navigate and ensure scroll to top
+  const navigateToProjects = () => {
+    navigate('/projects');
+    window.scrollTo(0, 0);
+  };
+  
   return (
     <div className="min-h-screen bg-background text-foreground flex">
       <Sidebar />
@@ -177,7 +184,7 @@ const Index = () => {
             
             <SectionHeader 
               title="Featured Projects" 
-              action={<Button variant="ghost" className="text-muted-foreground hover:text-foreground" onClick={() => navigate('/projects')}>See More</Button>}
+              action={<Button variant="ghost" className="text-muted-foreground hover:text-foreground" onClick={navigateToProjects}>See More</Button>}
             />
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
@@ -196,7 +203,7 @@ const Index = () => {
             
             <SectionHeader 
               title="Recent Projects" 
-              action={<Button variant="ghost" className="text-muted-foreground hover:text-foreground" onClick={() => navigate('/projects')}>See More</Button>}
+              action={<Button variant="ghost" className="text-muted-foreground hover:text-foreground" onClick={navigateToProjects}>See More</Button>}
             />
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -214,6 +221,11 @@ const Index = () => {
           
           <div className="col-span-1">
             <StatsCard totalHours="12,340h" stats={stats} />
+            
+            {/* Add the new SkillsCard component here */}
+            <div className="mt-6">
+              <SkillsCard />
+            </div>
           </div>
         </div>
       </div>

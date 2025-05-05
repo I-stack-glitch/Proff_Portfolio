@@ -1,5 +1,4 @@
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Sidebar from '@/components/Sidebar';
 import Header from '@/components/Header';
 import SectionHeader from '@/components/SectionHeader';
@@ -10,6 +9,11 @@ import { Search } from 'lucide-react';
 
 const Projects = () => {
   const [searchQuery, setSearchQuery] = useState('');
+  
+  // Effect to scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   
   // All projects
   const allProjects = [
