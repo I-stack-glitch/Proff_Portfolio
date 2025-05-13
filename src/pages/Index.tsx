@@ -31,10 +31,11 @@ const Index = () => {
       image: "https://i.ytimg.com/vi/0Wg5CdZpJks/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGDQgWyhyMA8=&rs=AOn4CLAoENSKEjzN2am_sZa1mphpubkWYw"
     },
     {
-      title: "Upcoming Projects....",
-      description: "------------------",
-      tags: ["NA", "NA"],
-      size: "sm"
+      title: "Josephus Theorem",
+      description: "The Josephus Theorem is a theoretical problem in mathematics and computer science that deals with a specific elimination game. It is named after the Jewish historian Flavius Josephus, who reportedly used a clever strategy to survive a similar real-life scenario.",
+      tags: ["MATLAB", "Arithmetic","Tailwind"],
+      size: "sm",
+      image: "https://as2.ftcdn.net/v2/jpg/04/07/39/67/1000_F_407396706_qnNIZAdA0yVXORwJWHZJkA8gOEubweKd.jpg"
     },
     {
       title: "Upcoming Projects.......",

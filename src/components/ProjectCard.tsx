@@ -11,6 +11,7 @@ interface ProjectCardProps {
   size?: 'sm' | 'lg';
 }
 
+
 const ProjectCard: React.FC<ProjectCardProps> = ({ 
   title, 
   description, 
@@ -24,6 +25,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   const contentRef = useRef<HTMLDivElement>(null);
   
   const isEchoBioNix = title === "EchoBioNix";
+  const isJosephusTheorem = title === "Josephus Theorem";
+  const isClickable = isEchoBioNix || isJosephusTheorem;
   const echoBioNixUrl = "https://precious-pudding-d8893b.netlify.app/";
 
   useEffect(() => {
@@ -58,17 +61,38 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       card.removeEventListener('mouseleave', handleMouseLeave);
     };
   }, []);
+  
+  const handleMouseDown = () => {
+    if (cardRef.current) {
+      cardRef.current.classList.add('scale-[0.98]');
+    }
+  };
+  const handleMouseUp = () => {
+    if (cardRef.current) {
+      cardRef.current.classList.remove('scale-[0.98]');
+    }
+  };
 
   return (
     <div 
       ref={cardRef}
       className={`portfolio-card relative overflow-hidden rounded-xl ${size === 'lg' ? 'md:col-span-2' : ''}`}
       style={{ 
-        cursor: isEchoBioNix ? 'pointer' : 'default',
-        backgroundColor: '#1b1311'
+        cursor: isClickable ? 'pointer' : 'default',
+        backgroundColor: '#1b1311',
+        transition: 'transform 0.1s ease-in-out'
+
       }}
-      onClick={isEchoBioNix ? () => window.open(echoBioNixUrl, "_blank", "noopener,noreferrer") : undefined}
-    >
+      onClick={isClickable ? () => {
+        if (isEchoBioNix) {
+          window.open(echoBioNixUrl, "_blank", "noopener,noreferrer");
+        } else if (isJosephusTheorem) {
+          window.open('https://josephustheorem.netlify.app/', "_blank", "noopener,noreferrer");
+        }
+      } : undefined}
+      onMouseDown={handleMouseDown}
+      onMouseUp={handleMouseUp}
+     >
       {featured && (
         <Badge className="absolute top-4 left-4 bg-primary hover:bg-primary text-white z-10">
           Featured
