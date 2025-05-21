@@ -79,7 +79,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       className={`portfolio-card relative overflow-hidden rounded-xl ${size === 'lg' ? 'md:col-span-2' : ''}`}
       style={{ 
         cursor: isClickable ? 'pointer' : 'default',
-        backgroundColor: '#1b1311',
+        backgroundColor: '#1b1216',
         transition: 'transform 0.1s ease-in-out'
 
       }}
