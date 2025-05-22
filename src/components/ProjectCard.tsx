@@ -26,7 +26,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   
   const isEchoBioNix = title === "EchoBioNix";
   const isJosephusTheorem = title === "Josephus Theorem";
-  const isClickable = isEchoBioNix || isJosephusTheorem;
+  const isJarvisAI = title === "Jarvis AI Voice Assistant";
+  const isClickable = isEchoBioNix || isJosephusTheorem || isJarvisAI;
   const echoBioNixUrl = "https://precious-pudding-d8893b.netlify.app/";
 
   useEffect(() => {
@@ -88,6 +89,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           window.open(echoBioNixUrl, "_blank", "noopener,noreferrer");
         } else if (isJosephusTheorem) {
           window.open('https://josephustheorem.netlify.app/', "_blank", "noopener,noreferrer");
+        } else if (isJarvisAI) {
+          window.open('https://jarvispersonalvoiceassistant.netlify.app/', "_blank", "noopener,noreferrer");
         }
       } : undefined}
       onMouseDown={handleMouseDown}
